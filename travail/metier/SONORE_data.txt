@@ -1,0 +1,18 @@
+﻿
+
+;#TransferName;Enregistrement sonore de l'assemblee départementale, session du 15/09/2015 au 16/09/2015 
+
+
+
+;#ContainsName[SESSIONS_SONORES[#1]];Enregistrement sonore de l'assemblée départementale, session du 15/09/2015 au 16/09/2015 
+;ASS-DEP_ENREG-SONORE_2015-09-15_16/2015-09-15-AM.MP3;SESSIONS_SONORES[#1];fichier audio de la matinée du 15/09/2015;2015-09-15
+;ASS-DEP_ENREG-SONORE_2015-09-15_16/2015-09-15-PM.MP3;SESSIONS_SONORES[#1];fichier audio de l'après-midi du 15/09/2015;2015-09-15
+;ASS-DEP_ENREG-SONORE_2015-09-15_16/2015-09-16-AM.MP3;SESSIONS_SONORES[#1];fichier audio de de la matinée du 16/09/2015;2015-09-16
+;ASS-DEP_ENREG-SONORE_2015-09-15_16/2015-09-16-PM.MP3;SESSIONS_SONORES[#1];fichier audio de l'après-midi du 16/09/2015;2015-09-16
+
+;#ContainsName[SESSIONS_SONORES[#2]];Enregistrement sonore de l'assemblée départementale, session du 15/12/2015 au 16/12/2015 
+;ASS-DEP_ENREG-SONORE_2015-12-15_16/2015-12-15-AM.MP3;SESSIONS_SONORES[#2];fichier audio de la matinée du 15/12/2015;2015-12-15
+;ASS-DEP_ENREG-SONORE_2015-12-15_16/2015-12-15-PM.MP3;SESSIONS_SONORES[#2];fichier audio de l'après-midi du 15/12/2015;2015-12-15
+;ASS-DEP_ENREG-SONORE_2015-12-15_16/2015-12-16-AM.MP3;SESSIONS_SONORES[#2];fichier audio de de la matinée du 16/12/2015;2015-12-16
+;ASS-DEP_ENREG-SONORE_2015-12-15_16/2015-12-16-PM.MP3;SESSIONS_SONORES[#2];fichier audio de l'après-midi du 16/12/2015;2015-12-16
+

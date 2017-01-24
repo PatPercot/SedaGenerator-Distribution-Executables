@@ -1,0 +1,66 @@
+------------------------------------------------------------------------------------------------
+
+Instructions pour l'utilisation des exécutables du générateur de brodereaux de transfert ProBANT
+
+(c) 2017 Licence CeCILL-C
+Département du Morbihan
+	Direction des systèmes d'information - Service Études - Patrick Percot
+
+------------------------------------------------------------------------------------------------
+1) À quoi sert ce logiciel
+
+C'est un générateur de bordereaux de transfert pour l'archivage numérique
+Regardez du côté du répertoire Documentation/Presentation.
+
+Le document generateur-quelques-mots.pdf vous donnera en quelques mots des clés
+pour comprendre à quoi ça sert.
+
+Le document CABAN-utilisation-generateur.pdf est un exemple concret d'utilisation.
+
+Dans Documentation, le document QuickStart.txt vous aidera à démarrer rapidement.
+
+
+-----------------------------------------------------------------------------------------------
+2) Avant la mise en œuvre
+
+Créer un fichier nommé "job.config" en partant d'une copie de "job.config.sample"
+Tous les programmes fonctionnent en ligne de commande
+
+Sous Windows lancer Démarrer / Invite de commandes
+Sous Linux lancer un terminal
+
+
+------------------------------------------------------------------------------------------------
+3) De quoi est composé ce logiciel
+
+Ce logiciel est composé de programme fournis par le CD56, CGI et Libriciel SCOP
+(anciennement Adullact Projet).
+
+La phase de rédaction du profil d'archivage se réalise avec le logiciel Agape.
+Agape est écrit en Java, l'exécutable est agape-v115.jar
+
+La phase de finalisation du profil et de préparation des données métier est assistée 
+par les outils fournis par le CD56 (logiciels écrits en C#). Ces outils sont exécutables 
+nativement sous Windows et utilisables via Mono sous Linux.
+Ces outils sont lancés respectivement par les commandes :
+	RngProfileControllerLauncher.exe TASK
+	BusinessDataControllerLauncher.exe TASK
+
+La phase de génération du bordereau de transfert peut être traitée avec les outils
+fournis par CD56 ou par CGI. Ils sont situés repectivement dans les répertoires lib-CD56
+et lib-cgi. Le ZIP du répertoire lib-cgi doit préalablement être décompacté.
+Ces outils sont lancés par la commande :
+	JavaSedaProfileGenerator_task.bat TASK
+	OU
+	JavaSedaProfileGenerator_task.sh TASK
+
+
+
+------------------------------------------------------------------------------------------------
+4) Les utilitaires de préparation de la distribution
+
+Les utilitaires ci-dessous ne servent qu'à préparer une nouvelle version de la distribution.
+Ils ne vous serviront pas si vous souhaitez produire des bordereaux de transfert :
+- utils\prepare-distro.bat
+- utils/prepare-distro.sh
+
