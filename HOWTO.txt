@@ -23,6 +23,10 @@ Dans Documentation, le document QuickStart.txt vous aidera à démarrer rapidement
 -----------------------------------------------------------------------------------------------
 2) Avant la mise en œuvre
 
+Aucune installation requise, il suffit de décompresser le ZIP téléchargé sur GitHub 
+dans un répertoire. Le logiciel est prêt à être utilisé.
+
+Pour cela :
 Créer un fichier nommé "job.config" en partant d'une copie de "job.config.sample"
 Tous les programmes fonctionnent en ligne de commande
 
