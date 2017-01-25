@@ -2,7 +2,10 @@
 
 ;#TransferName;Enregistrement sonore de l'assemblee départementale, session du 15/09/2015 au 16/09/2015 
 
-
+;#CustodialHistory;Les enregistrements sonores sont conservés à titre patrimonial pour témoigner de l'activité des sessions du l'assemblée départementale
+;#OriginatingAgency.Name;Département du Morbihan - Service de l'assemblée
+;#OriginatingAgency.Description;Le service de l'assemblée a pour mission de préparer les sessions du conseil départemental du Morbihan
+;#OriginatingAgency.Identification;22560001400014_87
 
 ;#ContainsName[SESSIONS_SONORES[#1]];Enregistrement sonore de l'assemblée départementale, session du 15/09/2015 au 16/09/2015 
 ;ASS-DEP_ENREG-SONORE_2015-09-15_16/2015-09-15-AM.MP3;SESSIONS_SONORES[#1];fichier audio de la matinée du 15/09/2015;2015-09-15
