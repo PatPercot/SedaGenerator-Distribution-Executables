@@ -50,7 +50,7 @@
 	data = travail/metier/SONORE_data.txt
 
 [accord-versement : ACCORD-SONORE]
-	SAE_Serveur = http://asalae.morbihan.fr
+	SAE_Serveur = http://sae.morbihan.fr
 	TransferIdPrefix = CD56_SONORE_
 	SAE_ProfilArchivage = ./travail/profils/enregistrement_sonore_schema.rng
 	TransferringAgencyId = 225602014_87
