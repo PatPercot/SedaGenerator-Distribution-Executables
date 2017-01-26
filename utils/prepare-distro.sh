@@ -31,6 +31,8 @@ cp ../C#-Seda-Generator/BusinessDataController/bin/Release/* .
 cp ../C#-Seda-Generator/RngProfileControllerTester/bin/Release/* .
 cp ../C#-Seda-Generator/SedaSummaryGeneratorTester/bin/Release/* .
 cp ../C#-Seda-Generator/RngProfileControllerTester/bin/Release/* .
+cp ../C#-Seda-Generator/HOWTO-* .
+cp ../C#-Seda-Generator/versions.txt .
 
 echo Purge des fichiers indésirables
 rm *.pdb

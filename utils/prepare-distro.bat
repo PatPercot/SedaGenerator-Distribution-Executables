@@ -28,6 +28,9 @@ copy ..\C#-Seda-Generator\BusinessDataController\bin\Release\* . 1>NUL
 copy ..\C#-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
 copy ..\C#-Seda-Generator\SedaSummaryGeneratorTester\bin\Release\* . 1>NUL
 copy ..\C#-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
+copy ..\C#-Seda-Generator\HOWTO-* . 1>NUL
+copy ..\C#-Seda-Generator\versions.txt . 1>NUL
+
 
 echo Purge des fichiers indésirables
 del *.pdb
