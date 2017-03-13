@@ -1,4 +1,4 @@
-#! /bin/sh
+﻿#! /bin/sh
 # Ce script permet de lancer le générateur de bordereaux Java
 # PARAMETRES :
 # - task : tâche à exécuter dans le fichier de configuration job.config
@@ -11,7 +11,7 @@
 TASK=$1
 
 #GENERATOR : Modifier à chaque changement de version
-JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.0.4.jar
+JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.0.5.jar
 
 #LIB
 ANTLR_LIB=lib-cd56/antlr-2.7.7.jar
