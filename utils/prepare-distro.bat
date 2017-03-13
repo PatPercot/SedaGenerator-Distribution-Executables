@@ -6,10 +6,10 @@ REM
 REM ***************************************************
 REM
 REM Organisation des projets dans l'arborescence
-REM Les projets C# et Java sont tous rassemblés dans
+REM Les projets CS et Java sont tous rassemblés dans
 REM un même répertoire (par exemple : SedaGenerator)
 REM 
-REM Le répertoire du projet C# est nommé C#-Seda-Generator
+REM Le répertoire du projet CS est nommé CS-Seda-Generator
 REM Le répertoire du projet Java CGI est nommé CGI-Java-Seda-Generator
 REM Le répertoire du projet Java CD56 est nommé CD56-Java-Seda-Generator
 REM Le répertoire des exécutables (ce projet) est nommé Distribution-Executables
@@ -20,16 +20,16 @@ REM ***************************************************
 REM On se place dans le répertoire parent
 cd ..
 
-REM Copie des exécutables C#
-echo Suppression des exécutables C#
+REM Copie des exécutables CS
+echo Suppression des exécutables CS
 
-echo Copie des exécutables C#
-copy ..\C#-Seda-Generator\BusinessDataController\bin\Release\* . 1>NUL
-copy ..\C#-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
-copy ..\C#-Seda-Generator\SedaSummaryGeneratorTester\bin\Release\* . 1>NUL
-copy ..\C#-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
-copy ..\C#-Seda-Generator\HOWTO-* . 1>NUL
-copy ..\C#-Seda-Generator\versions.txt . 1>NUL
+echo Copie des exécutables CS
+copy ..\CS-Seda-Generator\BusinessDataController\bin\Release\* . 1>NUL
+copy ..\CS-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
+copy ..\CS-Seda-Generator\SedaSummaryGeneratorTester\bin\Release\* . 1>NUL
+copy ..\CS-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
+copy ..\CS-Seda-Generator\HOWTO-* . 1>NUL
+copy ..\CS-Seda-Generator\versions.txt . 1>NUL
 
 
 echo Purge des fichiers indésirables
@@ -58,7 +58,7 @@ copy ..\CGI-Java-Seda-Generator\target\*.jar lib-cgi 1>NUL
 echo Copie de la documentation
 rmdir /S /Q Documentation
 mkdir Documentation
-xcopy /S /Q /Y ..\C#-Seda-Generator\Documentation Documentation 1>NUL
+xcopy /S /Q /Y ..\CS-Seda-Generator\Documentation Documentation 1>NUL
 
 REM On revient dans utils
 cd utils
