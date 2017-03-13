@@ -1,5 +1,9 @@
 -------------------------
 2017-03-13
+- Version 1.0.6 : POssibilité de générer des données métier exemples avec RngProfileControllerLauncher
+
+-------------------------
+2017-03-13
 - Version 1.0.5 : Code Java et C# compatibles
 
 -------------------------
