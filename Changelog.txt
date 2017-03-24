@@ -1,4 +1,13 @@
 -------------------------
+2017-03-24
+- Version 1.0.7 : 
+    Contrôleur
+	OriginatingAgency.xxx ne sont plus générées dans les données métier si le profil les fournit
+	Le préfixe "document: " dans les données métier n'est plus généré
+    Générateur de profils
+	Les RuntimeException ne sont plus déclenchées si les balise Duration, Receipt, ... sont trouvées
+
+-------------------------
 2017-03-13
 - Version 1.0.6 : POssibilité de générer des données métier exemples avec RngProfileControllerLauncher
 
