@@ -1,4 +1,4 @@
-Suivi des versions
+﻿Suivi des versions
 
 Version 1.0.7
 	Contrôleur de profils
@@ -6,7 +6,7 @@ Version 1.0.7
 		Le préfixe "document: " dans les données métier n'est plus généré
 	Générateur
 		Les RuntimeException ne sont plus déclenchées si les balise Duration, Receipt, ... sont trouvées
-	
+
 Version 1.0.6
 	Ajout de la fonctionnalité de production de données métier exemples à partir du profil
 	
