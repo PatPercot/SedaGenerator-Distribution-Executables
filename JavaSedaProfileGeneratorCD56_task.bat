@@ -7,6 +7,9 @@ REM - 0 : Succès.
 REM - 1 : Erreur grave, non tracées dans OUT_SUMMARY
 REM - 2 : Erreurs, tracées dans OUT_SUMMARY
 
+REM On se place dans le répertoire du script
+cd %~dp0
+
 REM ARGUMENTS
 SET TASK=%1
 

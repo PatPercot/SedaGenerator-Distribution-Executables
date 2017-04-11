@@ -28,6 +28,11 @@ dans un répertoire. Le logiciel est prêt à être utilisé.
 
 Pour cela :
 Créer un fichier nommé "job.config" en partant d'une copie de "job.config.sample"
+Puis créez votre répertoire de travail en copiant ou en renommant travail.sample en travail
+Ceci vous permet lors des mises à jour du logiciel de conserver vos données de travail
+en conservant la possibilité d'aller voir les exemples dans les fichiers et répertoires
+postfixés par ".sample"
+
 Tous les programmes fonctionnent en ligne de commande
 
 Sous Windows lancer Démarrer / Invite de commandes

@@ -1,4 +1,11 @@
 -------------------------
+2017-04-11
+- Version 1.0.8 : 
+	Émission des exxeptions dans stderr
+	Renommage travail en travail.sample pour préserver les installations en cours
+	Ajout du cd répertoire des exécutables dans les scripts
+
+-------------------------
 2017-03-24
 - Version 1.0.7 : 
     Contrôleur
