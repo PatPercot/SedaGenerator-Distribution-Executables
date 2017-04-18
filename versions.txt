@@ -1,5 +1,7 @@
 ﻿Suivi des versions
 
+À partir de la version 1.0.8, voir Changelog.txt
+
 Version 1.0.7
 	Contrôleur de profils
 		OriginatingAgency.xxx ne sont plus générées dans les données métier si le profil les fournit

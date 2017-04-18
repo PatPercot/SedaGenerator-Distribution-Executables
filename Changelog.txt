@@ -1,4 +1,10 @@
 -------------------------
+2017-04-17
+- Version 1.0.9 :
+	Contrôleur de données et de profils
+		Correction de bug sur la recherche des Keyword répétables et optionnels
+
+-------------------------
 2017-04-11
 - Version 1.0.8 : 
 	Émission des exxeptions dans stderr
