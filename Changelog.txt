@@ -1,5 +1,11 @@
 -------------------------
 2017-04-17
+- Version 1.1.0 :
+	Contrôleur de générateur et générateur de bordereaux
+		Traitement des dates extrêmes dans les unités documentaires
+
+-------------------------
+2017-04-17
 - Version 1.0.9 :
 	Contrôleur de données et de profils
 		Correction de bug sur la recherche des Keyword répétables et optionnels

@@ -15,9 +15,10 @@ cd `dirname $F`
 TASK=$1
 
 #GENERATOR : Modifier à chaque changement de version
-JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.0.6.jar
+JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.0.jar
 
 #LIB
+LOGBACK_DIR=lib-cd56/
 ANTLR_LIB=lib-cd56/antlr-2.7.7.jar
 ANTLR_RUNTIME_LIB=lib-cd56/antlr-runtime-3.5.jar
 CHEMISTRY_OPENCMIS_CLIENT_API_LIB=lib-cd56/chemistry-opencmis-client-api-0.13.0.jar
