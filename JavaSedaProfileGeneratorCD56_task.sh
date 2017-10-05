@@ -8,14 +8,13 @@
 # - 2 : Erreurs, tracées dans OUT_SUMMARY
 
 # On se place dans le répertoire du script
-F=`readlink $0`
-cd `dirname $F`
+cd $(dirname $(readlink -nf $0))
 
 #ARGUMENTS
 TASK=$1
 
 #GENERATOR : Modifier à chaque changement de version
-JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.0.jar
+JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.1.jar
 
 #LIB
 LOGBACK_DIR=lib-cd56/

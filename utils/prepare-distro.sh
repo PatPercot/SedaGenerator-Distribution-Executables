@@ -61,6 +61,9 @@ echo Copie de la documentation
 rm -rf Documentation
 cp -r ../CS-Seda-Generator/Documentation .
 
+echo Copie du Changelog
+cp ../CS-Seda-Generator/Changelog.txt .
+
 # On revient dans utils
 cd -
 

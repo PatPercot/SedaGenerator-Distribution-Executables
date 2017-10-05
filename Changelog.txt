@@ -1,39 +1,319 @@
 -------------------------
-2017-04-17
-- Version 1.1.0 :
-	Contrôleur de générateur et générateur de bordereaux
-		Traitement des dates extrêmes dans les unités documentaires
+Changements du 2017-09-19
+Version 1.1.1
+- Contrôleur de profils
+	Correction message d'erreur balise document obligatoire injustifié en version 1.0 du SEDA
+	Contrôle des balises TransferringAgencyObjectIdentifier et TransferringAgencyArchiveIdentifier
+		Testcases en version 1.0 et 0.2 du SEDA
+	Arrêt anticipé en cas de version du SEDA non reconnue
+- Générateur de profils
+	Génération des balises TransferringAgencyObjectIdentifier et TransferringAgencyArchiveIdentifier
+		Testcases en version 1.0 et 0.2 du SEDA
 
 -------------------------
-2017-04-17
-- Version 1.0.9 :
-	Contrôleur de données et de profils
-		Correction de bug sur la recherche des Keyword répétables et optionnels
+Changements du 2017-09-12
+- Générateur de profils
+	Ajout de la génération des dates extrêmes dans les unités documentaires
+		Testcases en version 1.0 et 0.2 du SEDA
 
 -------------------------
-2017-04-11
-- Version 1.0.8 : 
-	Émission des exxeptions dans stderr
-	Renommage travail en travail.sample pour préserver les installations en cours
-	Ajout du cd répertoire des exécutables dans les scripts
+Changements du 2017-04-17
+- Contrôleur de données et de profils
+	Correction de bug sur la recherche des Keyword répétables et optionnels
 
 -------------------------
-2017-03-24
-- Version 1.0.7 : 
-    Contrôleur
+Changements du 2017-03-24
+- Contrôleur de profils
 	OriginatingAgency.xxx ne sont plus générées dans les données métier si le profil les fournit
 	Le préfixe "document: " dans les données métier n'est plus généré
-    Générateur de profils
+- Générateur de profils
 	Les RuntimeException ne sont plus déclenchées si les balise Duration, Receipt, ... sont trouvées
 
 -------------------------
-2017-03-13
-- Version 1.0.6 : POssibilité de générer des données métier exemples avec RngProfileControllerLauncher
+Changements du 2017-03-13
+- Contrôleur de profils
+	Ajout de la fonctionnalité de génération de données métier exemples à partir du profil
 
 -------------------------
-2017-03-13
-- Version 1.0.5 : Code Java et C# compatibles
+Changements du 2017-03-03
+- Contrôleur de profil
+	Messages d'avertissement (--) si ArchivalAgreement ou OriginatingAgency optionnels
+	Messages d'erreur pour les balises FilePlanPosition
+- Contrôleur de données)
+	Mise à niveau de CustodialHistory dans les unités documentaires conforme au code Java
+	Ajout du contrôle dans Archive de ContentDescription.Description dans les données métier et le profil
+	Message d'alerte données manquantes uniquement si CustodialHistory ne fournit pas de contenu dans le profil
+	Message d'alerte si donnée dupliquée entre profil et données pour CustodialHistory et ContentDescription.Description
+	Messages d'erreur pour les balises FilePlanPosition
+- Contrôleurs de données et de profil
+	Mise à niveau des KeywordContent avec schemeID conforme au code Java
+- Génération de bordereaux
+	Jeu de test pour les FilePlanPosition (l'implémentation dans le code Java est partielle)
 
 -------------------------
-2017-01-24
-- Création du projet
+Changements du 2017-01-26
+- Contrôleurs de données et de profil
+	Correction des messages de présentation
+	Modification de ContentDescription en ContentDescription.Description
+	Introduction des KeywordContent contextualisés
+	
+-------------------------
+Changements du 2016-06-06
+- Contrôleur de profils et de données
+    Mots-clés avec tags + cas de tests
+- Contrôleur de profils
+	Unicité des mots-clés + cas de tests
+
+-------------------------
+Changements du 2016-05-24
+- Contrôleur de profils et générateur : correction erreur en version 1.0 du SEDA sur gestion de l'identification des documents
+  Ajout d'un cas de test pour le contrôle
+  Ajout de deux cas de test pour le générateur
+
+-------------------------
+Changements du 2016-05-11
+- Modification documentation pour générateur Java
+- Modification contrôleur de données et générateur pour ContentDescription.Description
+
+-------------------------
+Changements du 2016-05-03
+- Correction de la sélection de tâches. Si la tâche n'est pas précisée default est choisie.
+  Si default n'existe pas, la première est choisie. Erreur si la tâche n'existe pas
+
+-------------------------
+Changements du 2016-04-12
+- Livraison d'une version opérationnelle du contrôleur de données métier (manquaient les deriers développements dans l'exécutable)
+- Ajout d'un guide de démarrage rapide (Quickstart.txt) et des profils, données métier et documents nécessaires à son utilisation
+
+-------------------------
+Changements du 2016-04-08
+- Contrôleur de données métier (croisement des données avec le profil)
+- Ajout de commentaires dans les données métier (ligne débutant par #)
+- Corrections erreurs de messages
+- Ajout d'un contrôle sur le nombre de séparateurs dans les données métier
+
+-------------------------
+Changements du 2016-03-23
+
+- Ajout d'un répertoire documentation
+
+-------------------------
+Changements du 2016-03-15
+
+- Contrôleur de profils : 
+		Le message d'erreur quand l'attribut schemeID de la balise ArchivalAgencyObjectIdentifier est absent ou optionnel a été rendu compréhensible
+		La présence de l'attribut filename et de la balise Type est testée pour tous les documents lorsqu'une UD a plusieurs documents
+- Contrôleur de données indiquer des formats de date attendus lorsque le format est incorrect
+- Les job.config sélectionnent le job default quand aucun job n'est spécifié. Si default n'existe pas, sélection du premier job
+- Renommage des programmes Tester en Launcher
+
+-------------------------
+Changements du 2016-03-10
+
+- Les programmes sont rendus scriptables (plus d'attente de saisie clavier et code de retour)
+- Contrôleur de profils : 
+		Remplacement de  "la tagname" par "la balise" dans les messages d'erreur et les unités de test
+		Le message d'erreur en absence de balise ArchivalAgencyObjectIdentifier a été rendu compréhensible
+		Le message d'erreur en absence de l'attribut schemeID de la balise Identification a été rendu compréhensible
+
+-------------------------
+Changements du 2016-03-09
+
+- Correction erreur de format de date sur les balises OldestDate, LatestDate et StartDate
+- Ajout d'un test case pour la vérification du format des dates OldestDate, LatestDate et StartDate
+
+-------------------------
+Changements du 2016-03-08
+
+- Correction message d'erreur du contrôleur de données utilisant le caractère '{' au lie de '['
+
+-------------------------
+Changements du 2016-03-04
+
+- Mise en cohérences des TAG sur les KeywordContent (utilisation de [] au lieu de _)
+- Mise en œuvre des test de format sur les données métier (reste à faire conformité avec le profil)
+
+-------------------------
+Changements du 2016-03-02
+
+- Correction d'un profil RNG mal généré par Agape
+- Mise en cohérences des numérotations des mots-clés (présence de [] autour du numéro)
+- Changement du caractère de séparation pour le nom des balises préfixées par leur balise englobante
+  Le carcatère "_" est remplacé par le caractère "." (OriginatingAgency.Name) pour éviter une confusion 
+  avec la concaténation d'un TAG avec une balise (Keyword_TAG)
+
+-------------------------
+Changements du 2016-03-01
+
+- Suppression de l'utilisation de la base de données pour les testscases
+
+-------------------------
+Changements du 2016-02-29
+
+- Correction exception NullPointerException quand la date est absente des données métier
+
+-------------------------
+Changements du 2016-02-19
+
+- Correction des divers tests en erreur à cause des évolutions précédentes
+- ATTENTION : les contrôles sur la langue ont été neutralisés en attendant une meilleure gestion
+              rechercher les TODO pour localiser les points à corriger
+- suppressions des fichiers de traces et de résultats de la gestion par GIT
+- Ajout du traitement des empreintes et taill fournies par les données métier (SEDA 0.2 et SEDA 1.0)
+
+-------------------------
+Changements du 2016-02-18
+
+- Correction bug sur l'URI de l'algorithme sha256 "http://www.w3.org/2001/04/xmlenc#sha256"
+
+-------------------------
+Changements du 2016-02-17
+
+- Calcul du hash en sha256 pour les empreintes de documents
+- Ajout d'un contrôle sur la présnece interdite de la balise Document dans Archive
+
+-------------------------
+Changements du 2016-02-16
+
+- Possibilité d'utiliser le fichier de jobs pour remplacer la base de données
+- Modification du HOWTO
+
+-------------------------
+Changements du 2015-09-23
+
+- Ajout de contrôles sur les profils (attribut filename, type de document, langue; niveau des description)
+- Ajout des testa automatisés pour vérifier ces contrôles
+
+-------------------------
+Changements du 2015-09-21
+
+- Capture d'exceptions sur les programmes de contrôle et de génération de bordereaux
+- Programmes en version release dans Programs-Releases
+- Ajout du contrôle de la cardinalité de ArchivalAgencyObjectIdentifier
+
+-------------------------
+Changements du 2015-09-18
+
+- Ajout (et presque achèvement) de testcases du générateur de bordereaux
+
+-------------------------
+Changements du 2015-09-17
+
+- Ajout de testcases du générateur de bordereaux
+
+-------------------------
+Changements du 2015-09-16
+
+- Ajout des testcases du contrôleur de profils
+- Restructuration des testcases du générateur de bordereaux
+
+-------------------------
+Changements du 2015-09-10
+
+- Correction bug de comptage des KeywordContent (méthode CsvArchiveDocuments.getNbKeys())
+
+-------------------------
+Changements du 2015-09-09
+
+- Ajout try catch XMLException sur la lecture du profil d'archivage
+
+-------------------------
+Changements du 2015-09-08
+
+- Correction du chemin de la balise Comment
+
+-------------------------
+Changements du 2015-09-07
+
+- Récupération des erreurs de formats de date dans SedaSummaryRngGenerator
+
+-------------------------
+Changements du 2015-06-24
+
+- Ajout de la génération de quelques métadonnées : Comment, CustodialHistory et attribut mimeCode
+
+-------------------------
+Changements du 2015-06-24
+
+- Ajout d'un contrôle de cohérence entre le TAG et les cardinalités de l'unité documentaire dans RngProfileController
+
+-------------------------
+Changements du 2015-06-22
+
+- Correction d'un bug dans CsvArchiveDocuments méthode prepareCompleteList, il manquait la réinitialisation
+  de la variable lastError à "" au moment de la préparation de la liste
+
+-------------------------
+Changements du 2015-06-19
+
+- Amélioration de la lisibilité de l'affichage du programme test de contrôle du profil
+  Mise en évidence des erreurs
+
+- correction d'un bug dans le parcours d'arbre en passe 2
+  ajout d'une méthode pour couper les branches vides
+  L’arbre doit correspondre à ce qui sera généré, car le code le suit parallèlement au profil
+  sans vérifier qu’il est bien sur la même unité documentaire côté profil et côté arbre..
+  En passe 2, l’arbre est lu en profondeur en parcourant toutes les branches et seules les 
+  unités documentaires qui contiennent des documents sont générées, on zappe donc dans le 
+  profil le traitement des enfants de cette unité.
+
+  Problème : quand une unité documentaire vide contenait une unité documentaire vide, on arrêtait
+  le parcours du profil à la première unité vide, MAIS on continuait à parcourir l’arbre et on 
+  tombait sur sa fille qui est vide alors qu’on était passé à la sœur dans le profil.
+
+
+-------------------------
+Changements du 2015-06-18
+
+- Ajout du contrôle de la présence des balises Identification en cas de Document multiples dans une
+  unité documentaire dans la classe RngProfileController
+- Contrôle compatible avec le SEDA 1.0
+
+-------------------------
+Changements du 2015-06-17
+
+- En fin de passe 1 contrôle du nombre de documents des unités documentaires obligatoires
+  Pas de déclenchement de la passe 2 si une unité documentaire obligatoire n'a pas de documents
+
+-------------------------
+Changements du 2015-06-10
+
+- Corrections gestion des pré requis de chargement du profil, des données, de la base de données
+  + captation d'exceptions sur le calcul d'intégrité
+
+-------------------------
+Changements du 2015-06-03
+
+- Compatibilité avec le SEDA 1.0
+  Le changement du profil de SEDA 0.2 vers SEDA 1.0 n'a pas d'impact sur les données métier
+  
+- Génération des éléments optionnels de type oneOrMore (c'est-à-dire au minimum un élément) pour respecter la conformité avec le profil
+  Les éléments totalement optionnels (optional ou zeroOrMore) ne sont pas générés puisqu'ils ne provoquent pas de non conformité
+
+-------------------------
+Changements du 2015-05-21
+
+La dernière version du générateur de bordereaux de versements traite les problématiques du profil d’archivages des marchés publics.
+La version précédente permettait de générer  une et une seule unité documentaire dans le bordereau de versement pour chaque unité documentaire trouvée dans le profil d’archivage. Cette limitation ne permettait pas de traiter les marchés publics.
+Les TAGs qui permettaient de lier les unités documentaires aux documents avaient donc cette simple forme : « TAG_UNITE_DOCUMENTAIRE_1 » à la fois dans le profil et les données métier.
+Ces TAGs sont positionnés dans l’attribut SchemeId  de la balise ArchivalAgencyObjectIdenitfier.
+1)	Marchés allotis
+Un marché peut contenir plusieurs lots. Une seule unité documentaire (contenant d’autres unités documentaires) décrit ce que l’on attend comme documents pour chaque lot.
+Chacun des lots utilise la structure définie par une seule unité documentaire. Cette structure est répétée autant de fois qu’il y a de lots.
+Les TAGs qui permettent de lier les unités documentaires aux documents peuvent prendre une forme plus complexe : 
+-	« TAG_LOT+ » dans le profil d’archivage ;
+-	« TAG_LOT{#3] » dans les données métier (3ème lot).
+
+2)	Réponses des entreprises
+Pour les marchés, qu’ils soient allotis ou non, plusieurs entreprises peuvent proposer leur candidature.  Chaque candidature est structurée de la même façon et cette organisation est décrite une seul fois dans le profil d’archivage.
+Chacune des candidatures d’entreprise utilise la structure définie par une seule unité documentaire. Cette structure est répétée autant de fois qu’il y a de candidatures d’entreprises. Ceci peut ^donc être le cas dans un lot qui est lui-même une répétition d’une structure définie une seule fois dans le profil.
+Les TAGs qui permettent de lier les unités documentaires aux documents peuvent prendre une forme encore plus complexe : 
+-	« TAG_ENTREPRISE+ » dans le profil d’archivage (l’unité documentaire est fille de l’unité documentaire « TAG_LOT+ »)  ;
+-	« TAG_LOT{#3]//TAG_ENTREPRISE[#2] » dans les données métier (2ème entreprise candidate pour le 3ème lot).
+
+3)	Types de documents
+Le profil marchés publics (mais il n’est pas le seul) contient des unités documentaires dans lesquelles plusieurs types de documents peuvent être enregistrés. On peut ainsi avoir de 0 à N documents de type offre, suivis de 0 à N documents de type signature.
+Le TAG se trouve cette fois ci dans l’attribut SchemeId de la balise Identification des documents.
+Les TAGs qui permettent de lier les unités documentaires aux documents peuvent prendre une forme encore plus complexe : 
+-	« ENGAGEMENT » dans le profil d’archivage (Le document est dans l’unité documentaire « TAG_ENTREPRISE+ »  qui est fille de l’unité documentaire « TAG_LOT+ »)  ;
+-	« TAG_LOT{#3]//TAG_ENTREPRISE[#2]{ENGAGEMENT} » dans les données métier (engagement de la 2ème entreprise candidate pour le 3ème lot).

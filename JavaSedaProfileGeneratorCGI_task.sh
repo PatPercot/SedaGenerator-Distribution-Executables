@@ -7,6 +7,9 @@
 # - 1 : Erreur grave, non tracées dans OUT_SUMMARY
 # - 2 : Erreurs, tracées dans OUT_SUMMARY
 
+# On se place dans le répertoire du script
+cd $(dirname $(readlink -nf $0))
+
 #ARGUMENTS
 TASK=$1
 

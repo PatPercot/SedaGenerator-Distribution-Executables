@@ -60,6 +60,9 @@ rmdir /S /Q Documentation
 mkdir Documentation
 xcopy /S /Q /Y ..\CS-Seda-Generator\Documentation Documentation 1>NUL
 
+echo Copie du Changelog
+copy ..\CS-Seda-Generator\Changelog.txt . 1>NUL
+
 REM On revient dans utils
 cd utils
 
