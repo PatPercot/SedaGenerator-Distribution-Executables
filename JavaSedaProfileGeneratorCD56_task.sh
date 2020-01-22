@@ -11,10 +11,10 @@
 cd $(dirname $(readlink -nf $0))
 
 #ARGUMENTS
-TASK=$1
+TASK=$*
 
 #GENERATOR : Modifier à chaque changement de version
-JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.3.jar
+JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.4.jar
 
 #LIB
 LOGBACK_DIR=lib-cd56/

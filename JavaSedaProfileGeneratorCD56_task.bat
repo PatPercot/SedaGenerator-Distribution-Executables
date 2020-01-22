@@ -11,10 +11,10 @@ REM On se place dans le répertoire du script
 cd %~dp0
 
 REM ARGUMENTS
-SET TASK=%1
+SET TASK=%*
 
 REM GENERATOR : Modifier à chaque changement de version
-SET JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.3.jar
+SET JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.4.jar
 
 REM LIB
 SET LOGBACK_DIR=lib-cd56/

@@ -31,7 +31,7 @@ cp ../CS-Seda-Generator/BusinessDataController/bin/Release/* .
 cp ../CS-Seda-Generator/RngProfileControllerTester/bin/Release/* .
 cp ../CS-Seda-Generator/SedaSummaryGeneratorTester/bin/Release/* .
 cp ../CS-Seda-Generator/RngProfileControllerTester/bin/Release/* .
-cp ../CS-Seda-Generator/HOWTO-* .
+cp ../CS-Seda-Generator/HOWTO* .
 cp ../CS-Seda-Generator/versions.txt .
 
 echo Purge des fichiers indésirables

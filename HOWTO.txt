@@ -1,75 +1,185 @@
-------------------------------------------------------------------------------------------------
+/*****************************************************************************************
+ * 
+ * Générateur de bordereaux de transfert guidé par le profil d'archivage
+ *                         -----------------------
+ * Département du Morbihan
+ * Direction des systèmes d'information
+ * Service Études
+ * Patrick Percot
+ * Mars 2015
+ * 
+ * Réutilisation du code autorisée dans l'intérêt des collectivités territoriales
+ * 
+ * ****************************************************************************************/
 
-Instructions pour l'utilisation des exécutables du générateur de brodereaux de transfert ProBANT
+Informations sur la configuration du système de production de bordereaux de versements
 
-(c) 2017 Licence CeCILL-C
-Département du Morbihan
-	Direction des systèmes d'information - Service Études - Patrick Percot
-
-------------------------------------------------------------------------------------------------
-1) À quoi sert ce logiciel
-
-C'est un générateur de bordereaux de transfert pour l'archivage numérique
-Regardez du côté du répertoire Documentation/Presentation.
-
-Le document generateur-quelques-mots.pdf vous donnera en quelques mots des clés
-pour comprendre à quoi ça sert.
-
-Le document CABAN-utilisation-generateur.pdf est un exemple concret d'utilisation.
-
-Dans Documentation, le document QuickStart.txt vous aidera à démarrer rapidement.
+Visiter aussi le répertoire Documentation
 
 
------------------------------------------------------------------------------------------------
-2) Avant la mise en œuvre
+La responsabilité de tous les dysfonctionnements et de toutes les inepties que vous pourrez trouver dans ce code et
+dans ces documents revient à Patrick Percot, direction des systèmes d'information, service études du conseil départemental du Morbihan
 
-Aucune installation requise, il suffit de décompresser le ZIP téléchargé sur GitHub 
-dans un répertoire. Le logiciel est prêt à être utilisé.
-
-Pour cela :
-Créer un fichier nommé "job.config" en partant d'une copie de "job.config.sample"
-Puis créez votre répertoire de travail en copiant ou en renommant travail.sample en travail
-Ceci vous permet lors des mises à jour du logiciel de conserver vos données de travail
-en conservant la possibilité d'aller voir les exemples dans les fichiers et répertoires
-postfixés par ".sample"
-
-Tous les programmes fonctionnent en ligne de commande
-
-Sous Windows lancer Démarrer / Invite de commandes
-Sous Linux lancer un terminal
+J'ai glissé des (TODO) là où j'ai vu des améliorations à apporter au code
 
 
-------------------------------------------------------------------------------------------------
-3) De quoi est composé ce logiciel
+En résumé :
+1) Configuration du serveur du SAE
+2) Configuration des données du SAE
+	2-a) Configuration de la base de données
+	2-b) Configuration des fichiers de job
+3) Comment tester la conformité du profil d'archivage avec les contraintes imposées
+4) Comment tester et débugger la production du bordereau
+5) Générer un profil et produire des données métier
 
-Ce logiciel est composé de programme fournis par le CD56, CGI et Libriciel SCOP
-(anciennement Adullact Projet).
+1) Configuration du serveur du SAE
 
-La phase de rédaction du profil d'archivage se réalise avec le logiciel Agape.
-Agape est écrit en Java, l'exécutable est agape-v115.jar
+Ça permet de savoir à qui on envoie le bordereau de transfert et le ZIP.
+Idéalement, on devrait pouvoir spécifier plusieurs SAE et choisir celui à qui on veut faire l'envoi.
+À faire plus tard... (TODO)
 
-La phase de finalisation du profil et de préparation des données métier est assistée 
-par les outils fournis par le CD56 (logiciels écrits en C#). Ces outils sont exécutables 
-nativement sous Windows et utilisables via Mono sous Linux.
-Ces outils sont lancés respectivement par les commandes :
-	RngProfileControllerLauncher.exe TASK
-	BusinessDataControllerLauncher.exe TASK
+Ça se passe dans le fichier APP.config du projet SedaProfileGenerator.
+L'utilisateur doit être créé sur le serveur de préproduction avec seulement des droits sur les web services
+Attention, il faut d'abord se connecter une fois avec cet utilisateur afin de changer son mot de passe avant de supprimer ses droits.
 
-La phase de génération du bordereau de transfert peut être traitée avec les outils
-fournis par CD56 ou par CGI. Ils sont situés repectivement dans les répertoires lib-CD56
-et lib-cgi. Le ZIP du répertoire lib-cgi doit préalablement être décompacté.
-Ces outils sont lancés par la commande :
-	JavaSedaProfileGenerator_task.bat TASK
-	OU
-	JavaSedaProfileGenerator_task.sh TASK
+  <appSettings>
+    <!-- DEB : Transfert vers Asalaé -->
+    <!-- Pas utilisé, ces informations sont demandées par l'appelant des web services -->
+    <add key="BaseURI" value="https://pre-prodsae-dep56-e-megalis.navaho.fr" />
+    <add key="User" value="web-service" />
+    <add key="Pass" value="mot-de-passe-vachement-compliqué" />
+    <add key="Mail" value ="patrick.percot@morbihan.fr"/>
+    <!-- FIN : Transfert vers Asalaé -->
+
+  </appSettings>
+
+2) Configuration des données du SAE
+
+Certaines informations de configuration du SAE sont ncéessaires pour que le générateur fonctionne.
+La plus évidente d'entre elles est le profil d'archivage (le profil utilisé pour générer le bordereau doit être le même
+que celui que le SAE utilise pour ocntrôler les bordereaux de transfert.
+
+Ce sont ces données dont nous parlons ici.
+
+Elle speuvent être dans une base de données ou dans les fichiers de jobs.
+
+2-a) Configuration de la base de données
+
+Vous devrez créer une base de données pour stocker les informations de configuration du SAE que vous devrez donc recopier.
+Ces informations, idéalement, devraient être fournies par le SAE. À venir bientôt, on en discutera avec l'adullact qui
+est d'accord sur le principe.
+Ça sert aussi à stocker des choses qui ne sont pas dans le SAE mais que l'on doit avoir pour faire fonctionner tout ça.
+C'est le préfixe des identifiants de transfert et l'identifiant de transfert mis à jour à chaque nouveau bordereau produit
+La clé d'entrée, c'est l'accord de versement + le serveur auquel on doit envoyer le bordereau (cas d'un serveur mutualisé)
+
+Ci-dessous le script Pour SqlServer
+USE [BW_DEV]
+GO
+
+/****** Object:  Table [dbo].[SAE]    Script Date: 03/11/2015 13:03:11 ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
+CREATE TABLE [dbo].[SAE](
+	[SAE_AccordVersement] [nvarchar](50) NOT NULL,
+	[SAE_Serveur] [nvarchar](max) NOT NULL,
+	[TransferIdPrefix] [nvarchar](50) NULL,
+	[TransferIdValue] [nchar](10) NULL,
+	[SAE_ProfilArchivage] [nvarchar](max) NULL,
+	[TransferringAgencyId] [nvarchar](50) NULL,
+	[TransferringAgencyName] [nvarchar](max) NULL,
+	[TransferringAgencyDesc] [nvarchar](max) NULL,
+	[ArchivalAgencyId] [nvarchar](50) NULL,
+	[ArchivalAgencyName] [nvarchar](max) NULL,
+	[ArchivalAgencyDesc] [nvarchar](max) NULL
+) ON [PRIMARY]
+
+GO
+
+
+La configuration proprement dite après cette entrée en matière :
+
+Ça se passe dans trois endroits et rétrospectivement, je me dis que ce n'était pas malin (TODO). On peut pas toujours être futé ;°)
+En plus ce n'est pas paramétrable (TODO) ! On respire par le nez, là j'ai franchement pas été bon... ;-(
+
+
+2-a-a) Le premier endroit, ce sont les fichiers de configuration 
+	- App.config dans SedaSummaryGeneratorTester qu(il faut créer à partir de App.config.example
+	- Web.config dans WsSoapSedaGeneratorAspWebApp qu(il faut créer à partir de Web.config.example
+
+	Modifier dans la section appSettings la clé databaseConnexion pour configurer la chaîne de connexion à la base
+
+
+2-a-b) Le second endroit, c'est dans le projet SedaProfileGenerator, le fichier SedaSummaryRngGenerator.cs dans la méthode prepareInformationsWithDatabase
+     On y trouve la requête proprement dite pour aller chercher les données de paramétrage.
+
+                        command.CommandText = "SELECT TransferIdPrefix, TransferIdValue, SAE_ProfilArchivage, "
+                            + " TransferringAgencyId, TransferringAgencyName, TransferringAgencyDesc, ArchivalAgencyId, ArchivalAgencyName, ArchivalAgencyDesc " 
+                            + " "
+                            + " FROM SAE WHERE SAE_AccordVersement='" + accordVersement + "' and SAE_Serveur='" + baseURI + "'";
+
+2-a-c) Le troisième endroit, c'est dans la même méthode qu ci-dessus.
+     C'est la requête de mise à jour. Normalement on n'y touche pas... sauf si on crée une base de données avec un nom différent et des champs différents (TODO).
+
+                        command.CommandText = "UPDATE SAE SET TransferIdValue='" + Id + "' WHERE SAE_AccordVersement='" + accordVersement + "' and SAE_Serveur='" + baseURI + "'";
 
 
 
-------------------------------------------------------------------------------------------------
-4) Les utilitaires de préparation de la distribution
+2-b) Configuration des fichiers de job
 
-Les utilitaires ci-dessous ne servent qu'à préparer une nouvelle version de la distribution.
-Ils ne vous serviront pas si vous souhaitez produire des bordereaux de transfert :
-- utils\prepare-distro.bat
-- utils/prepare-distro.sh
+Les fichiers job.config peuvent être utilisés pour stocker ces informations.
+Un même accord de versement (IdAccordVersement) peut exister pour plusieurs serveurs.
+La clé primaire est donc [ IdAccordVersement, SAE_Serveur ]
+
+[accord-versement : IdAccordVersement]
+	SAE_Serveur = http://test
+	TransferIdPrefix = PREFIX_
+	SAE_ProfilArchivage = chemin-vers-fichier
+	TransferringAgencyId = TA_ID
+	TransferringAgencyName = TA_NAME
+	TransferringAgencyDesc = TA_DESC
+	ArchivalAgencyId = AA_ID
+	ArchivalAgencyName = AA_NAME
+	ArchivalAgencyDesc = AA_DESC
+
+Pour les appels par Web Service, le fichier de job doit être dans c:\Windows ou c:\Windows\System[32|64]
+	
+3) Comment tester la conformité du profil d'archivage avec les contraintes imposées
+
+3-a) Quelles contraintes ?
+
+Un pré-requis : utiliser Agape pour écrire son profil d'archivage, il n'y a pas aujourd'hui d'autre option, donc pas de problèmes de ce côté.
+
+La seule contrainte imposée à l’archiviste qui rédige le profil d’archivage est de prévoir la balise « ArchivalAgencyObjectIdentifier » 
+avec un attribut « schemeID » contenant « espace/espace » dans chaque unité documentaire : 
+	ArchivalAgencyObjectIdentifier schemeID="DOCLIST / PES". 
+La partie de cette valeur d’attribut qui suit la séquence « espace/espace  » permet de trouver les documents qui seront référencés 
+dans cette unité documentaire (ici tous les documents porteurs du tag PES). Quel tag ? On voit ça plus tard dans les données métier.
+Tant que les balises optionnelles ne sont pas générées, l’archiviste doit rendre obligatoires celles qui sont essentielles.
+
+3-b) Tester, puis corriger...
+
+Ça se passe dans le programme RngProfileControllerTester.
+
+Il faut créer un fichier job.config à partir du fichier job.config.sample.
+
+Toutes les explications sont dans le fichier job.config.sample.
+
+
+4) Comment tester et débugger la production du bordereau
+
+Ça se passe dans le programme SedaSummaryGeneratorTester.
+Il faut créer un fichier job.config à partir du fichier job.config.sample.
+
+Toutes les explications sont dans le fichier job.config.sample.
+
+
+
+5) Générer un profil et produire des données métier
+
+Là, il faut se lancer dans la lecture des deux fichiers HOWTO-profil-archivage et HOWTO-donnees-metier
+Bientôt un contrôleur de données métier...
 

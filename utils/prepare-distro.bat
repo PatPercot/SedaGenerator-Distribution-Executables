@@ -28,7 +28,7 @@ copy ..\CS-Seda-Generator\BusinessDataController\bin\Release\* . 1>NUL
 copy ..\CS-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
 copy ..\CS-Seda-Generator\SedaSummaryGeneratorTester\bin\Release\* . 1>NUL
 copy ..\CS-Seda-Generator\RngProfileControllerTester\bin\Release\* . 1>NUL
-copy ..\CS-Seda-Generator\HOWTO-* . 1>NUL
+copy ..\CS-Seda-Generator\HOWTO* . 1>NUL
 copy ..\CS-Seda-Generator\versions.txt . 1>NUL
 
 
