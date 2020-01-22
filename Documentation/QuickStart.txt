@@ -290,3 +290,4 @@ d'archivage.
 	que certaines informations concernant les documents à archiver ont été produites à partir
 	des documents enregistrés dans "travail/documents". À savoir empreintes d'intégrité 
 	et taille des documents
+	
