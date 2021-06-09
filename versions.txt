@@ -1,5 +1,13 @@
 ﻿Suivi des versions
 
+Version 1.1.8
+	Générateur
+		Correction erreur calcul dates extrêmes
+
+Version 1.1.7
+	Générateur
+		Correction erreur CustodialHistory en SEDA 1.0
+
 Version 1.1.6
 	Générateur
 		Possibilité de fournir les métadonnées du cycle de vie et le service versant dans les données métier

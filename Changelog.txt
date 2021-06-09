@@ -1,3 +1,16 @@
+
+-------------------------
+Changements du 2021-06-09
+Version 1.1.8
+- Générateur de bordereaux
+	Correction erreur calcul dates extrêmes
+	
+-------------------------
+Changements du 2021-04-29
+Version 1.1.7
+- Générateur de bordereaux
+	Correction erreur CustodialHistory en SEDA 1.0
+	
 -------------------------
 Changements du 2021-04-28
 Version 1.1.6

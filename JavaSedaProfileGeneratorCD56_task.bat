@@ -14,7 +14,7 @@ REM ARGUMENTS
 SET TASK=%*
 
 REM GENERATOR : Modifier à chaque changement de version
-SET JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.7.jar
+SET JAVASEDAPROFILEGENERATOR=lib-cd56/JavaSedaProfileGenerator-1.1.8.jar
 
 REM LIB
 SET LOGBACK_DIR=lib-cd56/
